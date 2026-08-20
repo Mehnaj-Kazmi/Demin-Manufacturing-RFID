@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400" width="320" height="400">
+<defs>
+  <linearGradient id="d" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#5b7fc4"/><stop offset="100%" stop-color="#3a5893"/>
+  </linearGradient>
+  <pattern id="tw" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <line x1="0" y1="0" x2="0" y2="6" stroke="#ffffff" stroke-opacity=".10" stroke-width="2"/>
+  </pattern>
+</defs>
+<rect width="320" height="400" fill="#eef2f7"/>
+<g>
+  <path d="M96,56 L142,36 L178,36 L224,56 L242,140 L226,152 L230,340 L90,340 L94,152 L78,140 Z" fill="url(#d)" stroke="#22345c" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M96,56 L142,36 L178,36 L224,56 L242,140 L226,152 L230,340 L90,340 L94,152 L78,140 Z" fill="url(#tw)"/>
+  <path d="M78,140 L52,268 L88,282 L96,156" fill="#33518c" stroke="#22345c" stroke-width="2.5"/>
+  <path d="M242,140 L268,268 L232,282 L224,156" fill="#33518c" stroke="#22345c" stroke-width="2.5"/>
+  <path d="M136,36 Q160,54 184,36" fill="#2c4677" stroke="#22345c" stroke-width="2.5"/>
+  <path d="M100,112 L220,112" fill="none" stroke="#e8c37a" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round"/>
+  <path d="M130,130 L130,150 L190,150 L190,130" fill="none" stroke="#e8c37a" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round"/>
+  <text x="160" y="372" text-anchor="middle" font-family="Segoe UI,Arial" font-size="13" fill="#5a6b80">BACK</text>
+</g></svg>

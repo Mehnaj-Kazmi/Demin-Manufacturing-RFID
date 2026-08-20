@@ -1,0 +1,56 @@
+% ===========================================================================
+%  Operator Portal - standalone manual
+%  Build:  pdflatex manual-operator.tex      (run it twice so the contents page is right)
+% ===========================================================================
+\documentclass[11pt,a4paper,oneside]{report}
+\usepackage{style/manualstyle}
+
+\hypersetup{pdftitle={Denim RFID Track and Trace - Operator Portal}}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[secStitch] (current page.north west) rectangle ([yshift=-95mm]current page.north east);
+  \node[anchor=north west,text=white,font=\fontsize{30}{36}\bfseries,align=left]
+    at ([xshift=25mm,yshift=-26mm]current page.north west)
+    {Denim RFID\\Track \& Trace};
+  \node[anchor=north west,text=white,font=\LARGE,align=left]
+    at ([xshift=25mm,yshift=-66mm]current page.north west) {Operator Portal};
+  \node[anchor=south east,text=brandgrey,font=\small,align=right]
+    at ([xshift=-25mm,yshift=25mm]current page.south east) {Fabric store \textbullet\ Cutting \textbullet\ Stitching \textbullet\ Sorting\\Wash \textbullet\ Finishing \textbullet\ Retrofit \textbullet\ Dispatch};
+\end{tikzpicture}
+
+\vspace*{110mm}
+
+{\Large\bfseries For staff working at a station on the factory floor}
+
+\vspace{6mm}
+
+{\large\color{brandgrey}
+This booklet assumes no computer experience. Every screen you will meet is
+pictured, and every button you need to press is named.}
+
+\vspace{14mm}
+
+\begin{plainbox}
+\textbf{What this software does, in one sentence.}\\[4pt]
+Every pair of jeans gets a small electronic tag when it is stitched, and from
+that moment the computer always knows where that garment is, how long it has
+been there, and who last handled it.
+\end{plainbox}
+
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\input{content/00-about}
+\input{content/01-getting-started}
+\input{content/02-basics}
+\input{content/portal-operator}
+
+\input{content/90-glossary}
+\input{content/91-troubleshooting}
+
+\end{document}

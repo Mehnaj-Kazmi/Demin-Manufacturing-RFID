@@ -1,0 +1,51 @@
+\chapter{Building Your Own Reports}
+\label{ch:reports}
+
+The system does not lock you into a fixed set of printouts. Anything it records,
+you can ask for in your own layout, save that layout, and run it again whenever
+you like. Supervisors and administrators both have this screen, and it works the
+same way for both.
+
+\section{Building a report}
+
+Open \menu{Reports}. You do not need to know anything technical --- you are
+filling in a form.
+
+\shot{22-admin-reports}{The report designer. Choose a dataset at the top, then
+tick the columns you want.}{fig:rep-designer}
+
+\begin{steps}
+  \item Choose a \field{Dataset} --- the kind of information you want. For
+        example \emph{Articles / WIP} for garments, or \emph{QC Inspections} for
+        quality.
+  \item Choose a \field{Report type}:
+        \begin{bullets}
+          \item \emph{Detail} gives one row per item.
+          \item \emph{Summary} groups them and counts.
+        \end{bullets}
+  \item Tick the columns, or the groupings if you chose Summary.
+  \item Add \field{Filters} to narrow it down --- for example
+        \emph{Section is not SHIPPED}.
+  \item Press \btn{Run report}.
+\end{steps}
+
+\shot{23-admin-reports-result}{A saved report, opened and run.}{fig:rep-run}
+
+\begin{bullets}
+  \item \btn{Export to CSV} saves the result for Excel.
+  \item \btn{Save this report} keeps the layout so you or anyone else can run it
+        again tomorrow.
+\end{bullets}
+
+\begin{tipbox}
+Start from a saved report rather than a blank one. Press \btn{Open} on any report
+in the list, change one thing, then \btn{Save as new}. It is far quicker than
+building from scratch.
+\end{tipbox}
+
+\begin{plainwords}
+A \textbf{dataset} is simply which list you are asking about --- garments,
+inspections, handovers, fabric rolls. A \textbf{filter} is a condition that
+throws away the rows you do not want. Nothing you tick here can damage anything:
+a report only ever reads.
+\end{plainwords}

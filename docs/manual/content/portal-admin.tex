@@ -1,0 +1,319 @@
+\chapter{The Administrator Portal}
+\label{ch:admin}
+
+\portalcover{Administrator Portal}{For plant management and the system administrator}{secDisp}
+
+\section{Who this chapter is for}
+
+You either run the plant or look after the system. You can see everything and
+change everything, which is why this chapter also explains what \emph{not} to do.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{40mm}p{98mm}@{}}
+\toprule
+\textbf{Your job} & \textbf{The screens you will live in} \\
+\midrule
+Plant Manager &
+  Dashboard, Section WIP, Orders, Reports \\
+System Administrator &
+  Users \& Readers, Master Data, Audit Trail \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{The dashboard}
+
+\menu{Dashboard} is the whole factory on one page. It refreshes every time you
+open it.
+
+\shot{10-admin-dashboard}{The plant dashboard.}{fig:adm-dash}
+
+\subsection{The eight headline numbers}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{34mm}p{104mm}@{}}
+\toprule
+\textbf{Number} & \textbf{What it really tells you} \\
+\midrule
+Work in progress   & Every garment on the floor, not yet shipped. \\
+Tagged today       & New garments registered at stitching --- your real input rate. \\
+Shipped today      & Units that have left the building. \\
+In transit         & Garments between two departments right now. A high number means trolleys are sitting around. \\
+QC pass rate       & Percentage passed today. \\
+Open rework        & Garments waiting to be corrected. \\
+Variances          & Handovers where the count did not agree. \textbf{This should be zero.} \\
+Fabric in store    & Metres available and how many rolls. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The section cards}
+
+Each card is a department. The big number is what it is holding; the coloured bar
+underneath is the ageing profile. Click any card to drill into it.
+
+\begin{plainwords}
+The fabric warehouse and cutting are measured in \emph{rolls} and \emph{bundles},
+not garments, because garments do not exist yet at that point in the process.
+That is why their cards show different units.
+\end{plainwords}
+
+\subsection{Output over the last 24 hours}
+
+The bar chart shows garments tagged, dispatched and QC-passed for each hour, and
+the table under it compares the last five days shift by shift. This is where you
+see the difference between the morning and evening shift.
+
+\subsection{What needs attention}
+
+Two panels list problems: handovers that did not tally, and work that has been
+sitting more than 24 hours. Both link straight to the detail.
+
+\section{Orders and how production is progressing}
+
+Open \menu{Orders}.
+
+\shot{14-admin-orders}{Customer orders with live progress.}{fig:adm-orders}
+
+Click any order to see it size by size.
+
+\shotsmall{15-admin-order-detail}{One order, broken down by size, showing how many
+are tagged, how many shipped, and where the rest currently are.}{fig:adm-order}
+
+The \field{Where it is now} column is the useful one: it shows how many pieces of
+that size are sitting in each department at this moment.
+
+\section{Reports}
+
+The report builder is described step by step in Chapter~\ref{ch:reports}. As
+an administrator you also have these datasets:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{40mm}p{98mm}@{}}
+\toprule
+\textbf{Dataset} & \textbf{One row is\ldots} \\
+\midrule
+Articles / WIP        & one garment \\
+Tracking Events       & one scan or status change \\
+Dispatch \& Receipt   & one handover document \\
+QC Inspections        & one inspection (or one defect, if a defect column is used) \\
+Fabric Rolls          & one roll \\
+Cutting \& Bundles    & one bundle \\
+Shipments             & one packed garment \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{tipbox}
+Press \btn{Show query} beside any result to see exactly what the system asked the
+database. Useful when someone questions a number.
+\end{tipbox}
+
+\section{Master data}
+
+\menu{Master Data} holds the reference lists everything else depends on.
+
+\shot{16-admin-masters-styles}{Designs, with the picture QC marks faults on.}{fig:adm-masters}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{34mm}p{104mm}@{}}
+\toprule
+\textbf{Tab} & \textbf{What to keep correct} \\
+\midrule
+Designs / Styles &
+  The front and back images. \textbf{These are what QC clicks on}, so an
+  out-of-date picture means faults get marked in the wrong place. \\
+Customers &
+  The tag specification. This is shown to the dispatch operator when they apply
+  the customer's tag. \\
+Fabric types, Colours &
+  Keep codes stable. Renaming a colour changes it everywhere, including history. \\
+Sizes &
+  The sort order controls how sizes appear on every report and document. Set it
+  once, properly (28, 30, 32\ldots\ not alphabetically). \\
+Defect codes &
+  The list QC chooses from. Too many codes and inspectors pick at random; too
+  few and you learn nothing. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\shotsmall{17-admin-masters-edit}{Editing a design.}{fig:adm-master-edit}
+
+\begin{warnbox}
+Set items to \emph{Inactive} rather than deleting them. Inactive items stop
+appearing in dropdowns but stay attached to the history that already refers to
+them.
+\end{warnbox}
+
+\section{User accounts}
+
+Open \menu{Users \& Readers}.
+
+\shot{18-admin-users}{Staff accounts.}{fig:adm-users}
+
+\begin{steps}
+  \item Press \btn{+ New user}.
+  \item Enter the username, full name and employee number.
+  \item Choose the \field{Role} --- this decides what they can do.
+  \item Choose the \field{Home section} --- this decides which transfers they see
+        first when they sign in.
+  \item Set an initial password and have them change it.
+\end{steps}
+
+\subsection{Choosing the right role}
+
+\shot{20-admin-roles}{The permission matrix, published by the server itself, so it
+always matches what is actually enforced.}{fig:adm-roles}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{30mm}p{108mm}@{}}
+\toprule
+\textbf{Role} & \textbf{Give it to} \\
+\midrule
+\texttt{OPERATOR}   & Station staff. Can scan, tag, sort, receive and dispatch. \\
+\texttt{QC}         & Inspectors. Can inspect and move batches, nothing else. \\
+\texttt{SUPERVISOR} & Department heads. Adds closing variances and cancelling dispatches. \\
+\texttt{MANAGER}    & Plant management. All the numbers and reports, plus orders and master data --- but not day-to-day scanning. \\
+\texttt{ADMIN}      & You and your deputy only. \\
+\texttt{VIEWER}     & Auditors and visitors. Can look, cannot touch. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{stopbox}
+\textbf{Give the smallest role that lets someone do their job.} Every action is
+recorded against the person who did it, which is only meaningful if people sign
+in as themselves and cannot do things outside their job.
+\end{stopbox}
+
+\subsection{Disabling somebody who has left}
+
+Set their status to \emph{Disabled}. Do not delete the account --- their name must
+remain attached to the work they did.
+
+\section{RFID readers}
+
+The \menu{RFID readers} tab is where fixed readers are registered.
+
+\shot{19-admin-readers}{Registered readers, and the instructions for connecting
+one.}{fig:adm-readers}
+
+\begin{steps}
+  \item Press \btn{+ New reader}. Give it a code, a name, the section it belongs
+        to and its type.
+  \item Press \btn{Issue key}. A long key is shown \textbf{once}.
+  \item Configure the reader to send that key with every read.
+\end{steps}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{28mm}p{110mm}@{}}
+\toprule
+\textbf{Type} & \textbf{Where it goes} \\
+\midrule
+\texttt{HANDHELD} & Carried by an operator. Needs no key. \\
+\texttt{PORTAL}   & A doorway. Reads what passes through. \\
+\texttt{TUNNEL}   & A conveyor. Best for reading dense piles. \\
+\texttt{TABLETOP} & A bench, for one garment at a time. \\
+\texttt{ENCODER}  & Writes new tags --- stitching and dispatch. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{warnbox}
+The key is shown once and never again. If it is lost, press \btn{Reissue key} ---
+the old key stops working immediately, so update the reader at the same time.
+\end{warnbox}
+
+The \field{Last seen} column tells you whether a reader is actually talking to the
+system. A reader that has not been seen since yesterday needs a look.
+
+\section{The audit trail}
+
+\menu{Audit Trail} records every change, permanently.
+
+\shot{21-admin-audit}{The audit trail, filtered and searchable.}{fig:adm-audit}
+
+You can filter by user, action, record type and date. Click any entry for the
+full record.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{36mm}p{102mm}@{}}
+\toprule
+\textbf{Look for} & \textbf{When} \\
+\midrule
+\texttt{LOGIN\_FAILED}   & Somebody cannot get in, or somebody is guessing passwords. \\
+\texttt{VARIANCE\_CLOSE} & A supervisor wrote off missing pieces. Read the reason. \\
+\texttt{ARTICLE\_ADJUST} & A garment was moved by hand. \\
+\texttt{TAG\_SWAP}       & A tag was replaced outside dispatch. \\
+\texttt{SCRAP}           & A garment was written off. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Tracing any garment}
+
+\menu{Trace Article} answers ``what happened to this one?''
+
+\shot{98-trace-search}{Search by tag or serial number.}{fig:adm-trace-search}
+
+Type or scan any tag the garment has \emph{ever} carried, or its serial number.
+The result is the complete life story: every scan, in order, with the person, the
+shift, the reader and the document.
+
+\begin{plainwords}
+If you scan a tracking tag that was removed at dispatch, the system says ``not
+registered''. That is correct, not a fault. That tag has been released and may
+already be on a different garment, so it would be wrong to claim it still
+identifies the old one. Search by serial number instead.
+\end{plainwords}
+
+\section{Routine housekeeping}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{26mm}p{112mm}@{}}
+\toprule
+\textbf{How often} & \textbf{What to do} \\
+\midrule
+Daily   & Check \emph{Variances} on the dashboard is zero. Chase any that are not. \\
+Daily   & Check the \field{Last seen} column on the readers tab. \\
+Weekly  & Skim the audit trail for variance closures and manual adjustments. \\
+Weekly  & Take a backup (see below). \\
+Monthly & Review user accounts and disable anyone who has left. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Backups}
+
+The database is a single file, but it is in use while the server runs, so
+\textbf{do not simply copy it}. Use the safe backup command:
+
+\begin{plainbox}
+\typed{sqlite3 data/denim\_rfid.db ".backup data/backup-2026-08-18.db"}
+\end{plainbox}
+
+Keep the copies somewhere off the machine.
+
+\subsection{Housekeeping the event history}
+
+At full production the tracking history grows by roughly a million rows and
+400\,MB a day. The dashboards stay fast regardless, because they read a
+pre-summarised table. Decide how long you must keep the raw scan history for
+traceability, and archive anything older.

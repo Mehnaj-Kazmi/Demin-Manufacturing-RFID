@@ -1,0 +1,24 @@
+# Runtime database (WAL mode - back up with sqlite3 .backup, not a file copy)
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# Scratch databases from the load test
+data/loadtest/
+
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+
+# Generated manual output. The PDFs in docs/manual/pdf/ are deliberately kept:
+# they are the deliverable, and rebuilding them needs either a LaTeX toolchain
+# or a browser. Everything else here is regenerable and stays out.
+docs/manual/build/
+docs/manual/html/
+docs/manual/*.zip
+docs/manual/README-overleaf.txt
+
+# Word lock files
+~$*.docx

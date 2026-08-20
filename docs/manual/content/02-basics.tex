@@ -1,0 +1,239 @@
+\chapter{Things Every User Needs to Know}
+
+This chapter explains the handful of ideas that appear on nearly every screen.
+Read it once and the rest of the manual will make sense.
+
+\section{The scan box}
+
+Wherever the system needs to know which garments you are holding, you will see a
+large box like the one in Figure~\ref{fig:scanbox}. This is the \textbf{scan box}.
+
+\shotsmall{71-transfers-receive}{The scan box. The big number on the blue strip
+counts the tags you have read so far.}{fig:scanbox}
+
+There are three ways tags get into that box.
+
+\begin{steps}
+  \item \textbf{A handheld reader.} Most hand scanners are set up to behave like
+        a keyboard. Click inside the box once, then pull the trigger. The tag
+        numbers type themselves in, one per line.
+  \item \textbf{A fixed reader.} At a portal or tunnel the reader sends the tags
+        to the system by itself. You do not have to do anything.
+  \item \textbf{The \btn{Simulate reader} button.} This is for training and
+        testing. It fills the box with the tags that really are in that location,
+        so you can practise without hardware.
+\end{steps}
+
+\begin{tipbox}
+Reading the same tag twice does no harm. The system counts each garment once,
+however many times its tag is seen. If in doubt, scan again.
+\end{tipbox}
+
+The blue strip shows how many tags are ready. \btn{Clear} empties the box and
+starts again.
+
+\section{Coloured labels}
+
+Small coloured labels appear all over the system. The colour tells you the
+meaning at a glance.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{26mm}p{26mm}p{86mm}@{}}
+\toprule
+\textbf{Colour} & \textbf{Examples} & \textbf{Meaning} \\
+\midrule
+Green   & \texttt{PASS}, \texttt{RECEIVED}, \texttt{READY}
+        & Everything is fine. Nothing to do. \\
+Blue    & \texttt{IN TRANSIT}, \texttt{DISPATCHED}
+        & Normal, in progress. Somebody else has the next step. \\
+Amber   & \texttt{VARIANCE}, \texttt{REWORK}, \texttt{HOLD}
+        & Needs a person to look at it. \\
+Red     & \texttt{FAIL}, \texttt{SCRAP}, \texttt{MISSING}
+        & Something is wrong, or the garment has been rejected. \\
+Grey    & \texttt{PENDING}, \texttt{CUT}
+        & Waiting its turn. Normal. \\
+\bottomrule
+\end{tabular}
+\caption{What the colours mean.}
+\end{table}
+
+\section{Words you will see}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{34mm}p{104mm}@{}}
+\toprule
+\textbf{Word} & \textbf{What it means in plain language} \\
+\midrule
+Tag / EPC &
+  The electronic label on the garment, and the unique number stored inside it.
+  \texttt{EPC} is just the technical name for that number. \\
+Article &
+  One single garment. Every article has its own tag and its own serial number. \\
+Serial number &
+  A readable name for a garment, like \typed{ART-260816-000123}. Easier to say
+  aloud than the tag number. \\
+Bundle &
+  A tied stack of cut pieces --- for example fifty size 32 fronts and backs ---
+  handed from cutting to the sewing line. \\
+Transfer note &
+  The document created when one department sends goods to another. It lists
+  exactly what was sent. \\
+Batch &
+  A group of garments moved together, usually all the same design and size. \\
+Variance &
+  The count on arrival did not match the count that was sent. \\
+WIP &
+  ``Work in progress'': everything currently on the factory floor, not yet shipped. \\
+Commissioning &
+  The moment a tag is attached to a garment and registered in the system.
+  After this, the garment exists as far as the computer is concerned. \\
+\bottomrule
+\end{tabular}
+\caption{The vocabulary of the system.}
+\end{table}
+
+\section{Tables: sorting, searching and opening}
+
+Most screens show a table. Three things are always true:
+
+\begin{bullets}
+  \item \textbf{Rows can be clicked.} Clicking a row opens the full detail of that item.
+  \item \textbf{Counts are on the right.} Numbers line up so you can compare them down a column.
+  \item \textbf{\btn{Export CSV} saves the table} to a file you can open in Excel.
+\end{bullets}
+
+\section{If something goes wrong}
+
+The system tells you when it cannot do what you asked, in a small panel at the
+bottom right of the screen. It always explains why, in words --- for example
+``Currently in Sorting Station, not Washing''.
+
+\begin{warnbox}
+The system refuses things on purpose to protect the count. If a garment is
+rejected, it is nearly always because it is genuinely somewhere else, or its tag
+belongs to another garment. Put that piece aside and tell your supervisor rather
+than trying again repeatedly.
+\end{warnbox}
+
+Chapter~\ref{ch:trouble} lists the messages you are most likely to meet and what
+to do about each one.
+
+\section{Moving goods between departments}
+
+Every station does these two things, whatever else its job is. Read this once;
+the rest of the manual refers back to it.
+
+\section{Receiving goods into your section}
+\label{sec:receive}
+
+Open \menu{Transfers} from the left menu. The top table, \emph{Waiting to be
+received}, lists everything other departments have sent you.
+
+\shot{70-transfers-inbox}{The Transfers screen. Everything sent to your section
+is at the top, with how long it has been waiting.}{fig:op-inbox}
+
+The \field{Waiting} column turns amber after four hours and red after eight.
+That is your cue to deal with it.
+
+\begin{steps}
+  \item Find the row for the trolley in front of you. The \field{Document}
+        number is printed on the note that came with it.
+  \item Press \btn{Receive} on that row.
+  \item Bulk-read everything that arrived into the scan box.
+  \item Press \btn{Receive and tally}.
+\end{steps}
+
+\subsection{Reading the result}
+
+The system now compares what arrived against what was sent, and shows five boxes.
+
+\shotsmall{72-transfers-tally}{The result of a count. Here two pieces were not
+found, so the handover is marked as a variance and the missing garments are
+listed by name.}{fig:op-tally}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{24mm}p{110mm}@{}}
+\toprule
+\textbf{Box} & \textbf{Meaning} \\
+\midrule
+Expected & How many the sending department said they sent. \\
+Received & How many you have just found. \\
+Missing  & On the note but not found. \\
+Extra    & Found but not on the note. \\
+Result   & \texttt{MATCHED} if everything agrees, \texttt{VARIANCE} if not. \\
+\bottomrule
+\end{tabular}
+\caption{The five boxes shown after a count.}
+\end{table}
+
+\begin{tipbox}
+\textbf{If it says VARIANCE, do not panic.} Look through the trolley again and
+scan a second time. Anything found is added to the count and the variance clears
+by itself. Only if the pieces genuinely cannot be found does a supervisor need to
+close the variance --- your supervisor has to close it.
+\end{tipbox}
+
+\section{Sending goods to the next department}
+\label{sec:dispatch}
+
+\begin{steps}
+  \item On the \menu{Transfers} screen press \btn{+ Dispatch a batch}.
+  \item Choose the department in \field{Send to}.
+  \item Type a \field{Batch reference} if your section uses one, for example
+        \typed{WASH-LOT-07}. This is printed on the note so the receiving
+        department can find it.
+  \item Bulk-read everything that is leaving.
+  \item Press \btn{Check what was read} if you want to see a breakdown first.
+  \item Press \btn{Generate transfer note}.
+\end{steps}
+
+\shotsmall{73-transfers-dispatch}{Sending a batch onward. The scan box has been
+filled by the reader; the note is created when you press the blue button.}{fig:op-dispatch}
+
+The printable note opens in a new tab automatically. Print it and send it with
+the trolley.
+
+\begin{warnbox}
+If some tags are refused you will see a list with a reason against each one, such
+as ``Currently in Finishing, not Sorting Station''. Those garments are not on the
+note. Put them aside --- they are in the wrong place and need a supervisor.
+\end{warnbox}
+
+\section{Looking back at what your section has moved}
+
+Below the inbox on the \menu{Transfers} screen is \emph{Transfer history for this
+section}: every handover your department has been part of, in both directions.
+
+\shot{74-transfers-history}{Transfer history. \texttt{IN} rows are things you
+received, \texttt{OUT} rows are things you sent. The \field{Sent} and
+\field{Received} columns should match.}{fig:op-history}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{24mm}p{110mm}@{}}
+\toprule
+\textbf{Column} & \textbf{What it tells you} \\
+\midrule
+Document & The transfer note number, printed on the paper that travelled with the goods. \\
+Route    & Which department sent it and which received it. \\
+Batch    & Your own reference for the load, if one was typed in. \\
+Sent \newline Received & The two counts. If they differ, the difference is in the next two columns. \\
+Missing \newline Extra & How many were on the note but not found, and found but not on the note. \\
+Status   & \texttt{RECEIVED} when it is settled, \texttt{VARIANCE} while a difference is still open. \\
+\bottomrule
+\end{tabular}
+\caption{Reading a row of transfer history.}
+\end{table}
+
+\begin{tipbox}
+Use the \field{Section} box at the top right to look at a different department.
+This is the quickest way to answer ``did you ever send us that batch?'' --- the
+answer is a document number, a time and a count.
+\end{tipbox}

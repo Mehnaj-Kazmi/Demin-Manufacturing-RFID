@@ -1,0 +1,24 @@
+{
+  "name": "denim-rfid-mes",
+  "version": "1.0.0",
+  "description": "RFID-based track & trace MES for high-volume denim garment manufacturing",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "seed": "node server/seed.js",
+    "reset": "node server/seed.js --reset",
+    "check": "node tools/syntaxcheck.js",
+    "test": "node tools/apitest.js",
+    "manual:check": "node docs/manual/check.mjs",
+    "manual:build": "node docs/manual/build.mjs",
+    "manual:bundle": "node docs/manual/bundle.mjs",
+    "manual:shots": "node tools/screenshots.js",
+    "manual:html": "node docs/manual/make-html.mjs",
+    "manual:pdf": "node docs/manual/make-html.mjs && node docs/manual/make-pdf.mjs"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "private": true
+}

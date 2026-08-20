@@ -1,0 +1,73 @@
+% ===========================================================================
+%  Denim RFID Track & Trace - Complete User Manual
+%  Build:  pdflatex main.tex   (run twice so the contents page is correct)
+% ===========================================================================
+\documentclass[11pt,a4paper,oneside]{report}
+\usepackage{style/manualstyle}
+
+\hypersetup{
+  pdftitle={Denim RFID Track and Trace - User Manual},
+  pdfsubject={User manual for all four portals},
+  pdfkeywords={RFID, denim, garment, manufacturing, MES, user manual}
+}
+
+\begin{document}
+
+% ------------------------------------------------------------ Title page
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[brandblue] (current page.north west) rectangle ([yshift=-95mm]current page.north east);
+  \node[anchor=north west,text=white,font=\fontsize{34}{40}\bfseries,align=left]
+    at ([xshift=25mm,yshift=-28mm]current page.north west)
+    {Denim RFID\\Track \& Trace};
+  \node[anchor=north west,text=white,font=\LARGE,align=left]
+    at ([xshift=25mm,yshift=-70mm]current page.north west) {Complete User Manual};
+  \node[anchor=south east,text=brandgrey,font=\small,align=right]
+    at ([xshift=-25mm,yshift=25mm]current page.south east)
+    {Covers all four portals\\Operator \textbullet\ Quality Inspector \textbullet\ Supervisor \textbullet\ Administrator};
+\end{tikzpicture}
+
+\vspace*{110mm}
+
+{\Large\bfseries A step-by-step guide for everyone who uses the system}
+
+\vspace{6mm}
+
+{\large\color{brandgrey}
+This manual assumes no computer experience. Every screen you will meet is
+pictured, every button you need to press is named, and every word that might
+be unfamiliar is explained in plain language.}
+
+\vspace{18mm}
+
+\begin{plainbox}
+\textbf{What this software does, in one sentence.}\\[4pt]
+Every pair of jeans gets a small electronic tag when it is stitched, and from
+that moment the computer always knows where that garment is, how long it has
+been there, and who last handled it --- right up to the moment it is packed for
+the customer.
+\end{plainbox}
+
+\end{titlepage}
+
+% -------------------------------------------------------------- Contents
+\tableofcontents
+\clearpage
+
+% ------------------------------------------------------------- Chapters
+\input{content/00-about}
+\input{content/01-getting-started}
+\input{content/02-basics}
+
+\part{The Four Portals}
+\input{content/portal-operator}
+\input{content/portal-qc}
+\input{content/portal-supervisor}
+\input{content/portal-admin}
+
+\part{Reference}
+\input{content/03-reports}
+\input{content/90-glossary}
+\input{content/91-troubleshooting}
+
+\end{document}

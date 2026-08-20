@@ -1,0 +1,75 @@
+\chapter{Getting Started}
+
+\section{What you need}
+
+\begin{bullets}
+  \item A computer or tablet with a web browser (Chrome, Edge or Firefox).
+  \item The address of the system. On the factory network this is usually
+        \typed{http://denim-rfid:8080} or an address your supervisor will give you.
+  \item Your own username and password. Never use somebody else's.
+\end{bullets}
+
+\begin{stopbox}
+Your username identifies every action you take. If you scan a batch under
+somebody else's login, the record will say they did it. Always sign in as
+yourself, and sign out when you leave the station.
+\end{stopbox}
+
+\section{Signing in}
+
+\begin{steps}
+  \item Open the browser and type the address of the system.
+  \item Type your \field{Username} in the first box.
+  \item Type your \field{Password} in the second box.
+  \item Press \btn{Sign in}.
+\end{steps}
+
+\shotsmall{01-login}{The sign-in screen. This is the first thing you see.}{fig:login}
+
+If the password is wrong you will see a red message. Check that Caps~Lock is
+off and try again. After several failed attempts, ask your supervisor --- they
+can set you a new password.
+
+\section{Signing out}
+
+Press \btn{Sign out} at the bottom left of the screen. Always do this before
+leaving a shared station, otherwise the next person's work is recorded under
+your name.
+
+\section{The parts of the screen}
+
+Every screen in the system is laid out the same way. Once you know these four
+areas, you can find your way around any part of the software.
+
+\shot{11-admin-dashboard-top}{The four areas of every screen: (1) the menu down
+the left, (2) your name and the sign-out button at the bottom left, (3) the page
+title and buttons across the top, (4) the working area in the middle.}{fig:layout}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{30mm}p{110mm}@{}}
+\toprule
+\textbf{Area} & \textbf{What it is for} \\
+\midrule
+Left menu &
+  The list of screens you are allowed to open. You will only see the ones your
+  job needs --- the list is shorter for an operator than for a manager. A number
+  in a circle means something is waiting for you. \\
+Bottom left &
+  Your name, your role, the \btn{Theme} button (switches between light and dark
+  for bright or dim areas) and \btn{Sign out}. \\
+Top bar &
+  The name of the screen you are on, a one-line description, and the main
+  buttons for that screen. \\
+Middle &
+  The actual work: lists, forms and the boxes you scan into. \\
+\bottomrule
+\end{tabular}
+\caption{What each part of the screen does.}
+\end{table}
+
+\begin{tipbox}
+If the left menu is missing on a small tablet, press the \btn{$\equiv$} button at
+the top left to slide it open.
+\end{tipbox}

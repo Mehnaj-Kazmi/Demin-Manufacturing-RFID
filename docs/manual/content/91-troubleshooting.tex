@@ -1,0 +1,237 @@
+\chapter{When Something Goes Wrong}
+\label{ch:trouble}
+
+The system refuses things on purpose, to protect the count. Nearly every message
+below is the software doing its job. Find the message you saw, and follow the
+advice.
+
+\section{Signing in}
+
+\begin{longtable}{@{}p{52mm}p{86mm}@{}}
+\toprule
+\textbf{Message} & \textbf{What to do} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Message} & \textbf{What to do} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+Invalid username or password &
+  Check Caps~Lock. Check you are using your own account. After a few tries, ask
+  your supervisor to reset it. \\
+
+Your session has expired &
+  Normal after twelve hours, or if you were signed in elsewhere. Sign in again.
+  Nothing you saved is lost. \\
+
+Cannot reach the server &
+  The network or the server is down. Tell your supervisor. Do not keep working on
+  paper without telling anyone --- the count will drift. \\
+
+\end{longtable}
+
+\section{Scanning and receiving}
+
+\begin{longtable}{@{}p{52mm}p{86mm}@{}}
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+Tag is not registered to any article &
+  This tag was never commissioned, or it was released at dispatch and is now
+  blank. Set the garment aside for a supervisor. \\
+
+Currently in \emph{[department]}, not \emph{[your department]} &
+  The system believes this garment is somewhere else. Usually a trolley moved
+  without being scanned. Set it aside and tell your supervisor, who can correct
+  the record. \\
+
+Already dispatched on \emph{[document]} &
+  Somebody has already sent this garment. Check whether two people scanned the
+  same trolley. \\
+
+Article is on hold &
+  It was written off in an earlier variance. A supervisor must release it. \\
+
+Count does not match &
+  Not an error. Search the trolley and scan again --- anything found is added and
+  the variance clears. \\
+
+Nothing scanned &
+  The scan box is empty. Click inside it before pulling the trigger. \\
+
+\end{longtable}
+
+\section{Attaching tags at stitching}
+
+\begin{longtable}{@{}p{52mm}p{86mm}@{}}
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+\emph{n} tag(s) are already registered to other articles &
+  Those tags are in use on other garments. The list is shown. Take them off, use
+  fresh tags, and hand the used ones to your supervisor. \\
+
+Bundle has \emph{n} garment(s) left to tag but \emph{m} tags were scanned &
+  You have more tags than pieces. Either you scanned a tag twice from a nearby
+  tray, or the bundle count is wrong. Re-count the bundle. \\
+
+Bundle has not been issued to stitching yet &
+  Cutting has not handed it over. Ask them to press
+  \btn{Issue all to stitching}. \\
+
+\end{longtable}
+
+\section{Quality control}
+
+\begin{longtable}{@{}p{52mm}p{86mm}@{}}
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+A QC failure must record at least one defect &
+  You pressed Fail without marking anything. Click the design where the fault is
+  and choose a defect first. \\
+
+\emph{[serial]} is in \emph{[department]}, not QC &
+  The garment has not been received into quality control. Receive the batch on
+  the Transfers screen first. \\
+
+The picture does not match the garment &
+  The design image in Master Data is out of date. Do not mark faults on the wrong
+  picture --- tell your administrator. \\
+
+\end{longtable}
+
+\section{Retrofitting}
+
+\begin{longtable}{@{}p{52mm}p{86mm}@{}}
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+Describe the correction &
+  The \field{Correction carried out} box is empty. Write what you actually did. \\
+
+No open retrofit job for this article &
+  This garment has not been failed by quality control, or the job is already
+  closed. Check the serial number. \\
+
+\emph{[serial]} is in \emph{[department]}, not Retrofitting &
+  Receive the batch into retrofit before completing the job. \\
+
+\end{longtable}
+
+\section{Dispatch}
+
+\begin{longtable}{@{}p{52mm}p{86mm}@{}}
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Message} & \textbf{What it means and what to do} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+\emph{[serial]} has not passed QC &
+  Only inspected and passed garments can be re-tagged. Send it back to quality
+  control. \\
+
+Customer tag \ldots\ is already in use &
+  That customer tag has been applied to another garment. Use a fresh one. \\
+
+\emph{[serial]} already carries customer tag \ldots &
+  This garment has already been re-tagged. Do not do it twice. \\
+
+The customer tag must differ from the tracking tag &
+  You scanned the same tag into both boxes. Scan the new tag into the second
+  box. \\
+
+\end{longtable}
+
+\section{Reading tags reliably}
+
+If a reader keeps missing tags, the cause is almost always physical rather than
+software.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{46mm}p{92mm}@{}}
+\toprule
+\textbf{Symptom} & \textbf{Usual cause} \\
+\midrule
+A few tags missed in a dense pile &
+  Tags are shielded by other garments. Move the pile through the reader rather
+  than holding it still, or read it in two halves. \\
+
+Nothing reads at all &
+  The reader has lost power or network. Check \field{Last seen} on the readers
+  screen. \\
+
+Tags read from the next station &
+  The reader's power is set too high, or antennas are pointing the wrong way.
+  Report it --- stray reads cause wrong-section errors. \\
+
+One particular garment never reads &
+  Its tag is damaged. A supervisor can fit a replacement without losing the
+  garment's history. \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Who to ask}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{46mm}p{92mm}@{}}
+\toprule
+\textbf{Problem} & \textbf{Ask} \\
+\midrule
+A garment is in the wrong section        & Your supervisor \\
+Missing pieces after two scans           & Your supervisor \\
+A tag will not read                      & Your supervisor \\
+You cannot sign in                       & Your supervisor, then the administrator \\
+A reader is offline                      & The administrator \\
+A design picture is wrong                & The administrator \\
+You need a new kind of report            & Your supervisor or the plant manager \\
+\bottomrule
+\end{tabular}
+\end{table}

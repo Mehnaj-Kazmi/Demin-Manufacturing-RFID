@@ -1,0 +1,214 @@
+\chapter{The Quality Inspector Portal}
+\label{ch:qc}
+
+\portalcover{Quality Inspector Portal}{For staff at the inspection benches}{secQC}
+
+\section{Who this chapter is for}
+
+You inspect finished garments and decide whether each one is good enough to send
+to the customer. The system gives you three things the old paper method could
+not:
+
+\begin{bullets}
+  \item The \textbf{right specification} for the garment in front of you, pulled
+        up automatically from its tag.
+  \item A picture of the design on which you can mark \textbf{exactly where} the
+        fault is.
+  \item A record of \textbf{every inspection ever done} on that garment, so you
+        know if it has been through before.
+\end{bullets}
+
+\section{Your screen}
+
+Open \menu{Quality Control}. There are three tabs across the top.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{32mm}p{106mm}@{}}
+\toprule
+\textbf{Tab} & \textbf{What it is for} \\
+\midrule
+Inspect          & Your working screen. Scan a garment and check it. \\
+QC queue         & Everything currently sitting in quality control. \\
+Defect analysis  & Where faults happen on each design, and which faults are most common. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\shot{80-qc-inspect-empty}{The Inspect tab, waiting for you to scan a garment.}{fig:qc-empty}
+
+\section{Inspecting one garment}
+
+\begin{steps}
+  \item Put the garment on the bench.
+  \item Scan its tag. If your bench reader is set up, the number appears by
+        itself; otherwise type it and press Enter.
+  \item Press \btn{Look up}.
+\end{steps}
+
+The screen now shows everything about this garment.
+
+\shot{82-qc-inspect-garment}{A garment ready for inspection. The design picture is
+on the left; the order, customer, size and inspection history on the right.}{fig:qc-garment}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{34mm}p{104mm}@{}}
+\toprule
+\textbf{What you see} & \textbf{Why it matters} \\
+\midrule
+Design picture      & The correct design for this garment, front and back. \\
+Colour and size     & Check the garment matches. \\
+Order and customer  & Different customers accept different tolerances. \\
+In QC since         & How long it has been waiting. \\
+Previous failures   & If this is not the first time, look harder. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Marking a fault on the design}
+
+This is the part that makes the retrofit operator's job possible.
+
+\begin{steps}
+  \item Look at the garment and find the fault.
+  \item \textbf{Click the same place on the picture.} A small window opens.
+  \item Choose the fault from the list, set how serious it is, and add a short
+        note if it helps.
+  \item Press \btn{Add defect}.
+\end{steps}
+
+\shotsmall{83-qc-defect-dialog}{Clicking the design opens this window. Choose what
+is wrong and how serious it is.}{fig:qc-dialog}
+
+A numbered marker now sits on the picture exactly where you clicked, and the
+fault is listed beside it.
+
+\shot{84-qc-defect-marked}{The fault is marked. Marker 1 on the design is the
+same fault as item 1 in the list.}{fig:qc-marked}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{28mm}p{110mm}@{}}
+\toprule
+\textbf{Severity} & \textbf{Use it when} \\
+\midrule
+\texttt{CRITICAL} & The garment cannot be sold like this --- an open seam, a hole, a wrong label. \\
+\texttt{MAJOR}    & A customer would notice and complain --- a broken stitch, a stain. \\
+\texttt{MINOR}    & Cosmetic; a customer probably would not notice --- slight puckering. \\
+\bottomrule
+\end{tabular}
+\caption{Choosing the right severity.}
+\end{table}
+
+\begin{tipbox}
+\textbf{Use both views.} Press \btn{Front} or \btn{Back} above the picture to mark
+faults on either side. If a fault has no particular place --- a measurement that
+is out of tolerance, for instance --- use \btn{+ Add defect without a position}.
+\end{tipbox}
+
+\begin{tipbox}
+Clicked in the wrong spot? Just click the marker itself and it disappears.
+\end{tipbox}
+
+\section{Passing or failing}
+
+Two large buttons sit at the top right of the garment panel.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{38mm}p{100mm}@{}}
+\toprule
+\textbf{Button} & \textbf{What happens next} \\
+\midrule
+\btn{Pass} &
+  The garment is cleared and can go to dispatch. \\
+\btn{Fail --- send to retrofit} &
+  A repair job is opened automatically, carrying every marker you placed.
+  The garment then needs sending to the retrofit bench on a transfer note. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{stopbox}
+\textbf{You cannot fail a garment without giving a reason.} If you press
+\btn{Fail} with no faults marked, the system stops you. This is deliberate: the
+retrofit operator has to know what to fix.
+\end{stopbox}
+
+After you decide, the screen offers \btn{Inspect the next garment} so you can
+carry straight on.
+
+\section{Passing a whole clean batch}
+
+When you have checked a pile by hand and every piece is good, you do not have to
+scan them one at a time.
+
+\begin{steps}
+  \item Scroll to \emph{Pass a whole batch} at the bottom of the Inspect tab.
+  \item Bulk-read the whole pile into the scan box.
+  \item Press \btn{Pass all scanned garments}.
+\end{steps}
+
+\begin{warnbox}
+Every pass is still recorded individually against \emph{your} name. Only use the
+batch button when you really have inspected every garment in the pile.
+\end{warnbox}
+
+Anything that could not be passed --- because it is not in quality control, for
+example --- is listed afterwards so nothing is silently skipped.
+
+\section{The QC queue}
+
+The \menu{QC queue} tab shows everything in the department, oldest first.
+
+\shot{81-qc-queue}{The QC queue. Click any row to inspect that garment.}{fig:qc-queue}
+
+The four boxes at the top tell you at a glance:
+
+\begin{bullets}
+  \item how many are \textbf{awaiting inspection},
+  \item how many have \textbf{passed} and are waiting to go to dispatch,
+  \item how many have \textbf{failed} and are waiting to go to retrofit,
+  \item how many \textbf{batches are inbound} from finishing.
+\end{bullets}
+
+Clicking any row takes you straight to the inspection screen for that garment.
+
+\section{Defect analysis}
+
+The \menu{Defect analysis} tab answers the question ``where do our faults keep
+happening?''
+
+\shot{85-qc-analysis}{Defect analysis. Every marker ever placed on this design is
+shown on one picture, so patterns stand out.}{fig:qc-analysis}
+
+\begin{bullets}
+  \item The picture on the left shows \textbf{every fault ever recorded} on that
+        design. A cluster of markers in one place usually means a machine or an
+        operation needs attention, not a careless worker.
+  \item The table on the right ranks faults by how often they occur.
+  \item The bottom table shows inspector activity.
+\end{bullets}
+
+\begin{plainwords}
+A high fail rate for one inspector does not automatically mean they are wrong ---
+they may simply be checking the hardest styles. Use this table to start a
+conversation, never to draw a conclusion on its own.
+\end{plainwords}
+
+\section{Receiving and sending batches}
+
+Quality control receives from finishing and sends to either retrofit or dispatch.
+Both work exactly as described in Section~\ref{sec:receive}
+and Section~\ref{sec:dispatch}.
+
+\begin{tipbox}
+When sending passed garments to dispatch, the system checks each one really has
+passed. Anything that has not is refused with a clear reason, so a failed garment
+can never slip into a customer shipment.
+\end{tipbox}

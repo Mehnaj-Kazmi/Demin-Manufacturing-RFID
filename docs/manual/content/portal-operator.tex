@@ -1,0 +1,333 @@
+\chapter{The Operator Portal}
+\label{ch:operator}
+
+\portalcover{Operator Portal}{For staff working at a station on the factory floor}{secStitch}
+
+\section{Who this chapter is for}
+
+You work at one of the stations on the floor: the fabric store, the cutting
+room, a sewing line, the sorting table, the wash plant, finishing, the retrofit
+bench or dispatch. Your job in the system is simple:
+
+\begin{plainbox}
+\textbf{Scan what arrives. Scan what leaves. Tell the system what you did.}
+\end{plainbox}
+
+You do not need to understand the rest of the factory. Each screen tells you what
+is waiting for you and what to press.
+
+\section{Your daily routine}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=7mm,
+  st/.style={rectangle,rounded corners=3pt,fill=brandsoft,draw=brandblue,
+             minimum height=13mm,text width=30mm,align=center,font=\small},
+  ar/.style={-{Stealth[length=3mm]},thick,draw=brandblue}]
+\node[st] (a) {\textbf{1.} Sign in};
+\node[st,right=of a] (b) {\textbf{2.} Check what is waiting};
+\node[st,right=of b] (c) {\textbf{3.} Receive it and count};
+\node[st,right=of c] (d) {\textbf{4.} Do your work};
+\node[st,below=8mm of d] (e) {\textbf{5.} Send it onward};
+\node[st,left=of e] (f) {\textbf{6.} Print the note};
+\node[st,left=of f] (g) {\textbf{7.} Sign out};
+\draw[ar] (a)--(b); \draw[ar] (b)--(c); \draw[ar] (c)--(d); \draw[ar] (d)--(e);
+\draw[ar] (e)--(f); \draw[ar] (f)--(g);
+\end{tikzpicture}
+\caption{The same seven steps apply at every station.}
+\end{figure}
+
+\section{Moving goods in and out}
+
+Receiving a batch into your section and sending one onward are the same at
+every station, and are described in Section~\ref{sec:receive} and
+Section~\ref{sec:dispatch}. The rest of this chapter covers the work that is
+particular to each station.
+
+\section{Fabric store: receiving denim rolls}
+
+Open \menu{Fabric Store}. The first tab shows how much fabric you are holding.
+
+\shot{30-store-stock}{Fabric stock, grouped by type, colour and condition.}{fig:store-stock}
+
+To book in a delivery, press \btn{+ Receive rolls}.
+
+\shotsmall{32-store-receive}{Booking in a delivery. Add one block per roll.}{fig:store-receive}
+
+\begin{steps}
+  \item Fill in the \field{Supplier} and \field{Invoice reference} at the top.
+  \item For each roll, choose the fabric type and colour, then enter the shade
+        or batch, the length in metres, and where you are putting it.
+  \item If the roll carries its own tag, scan it into \field{Roll tag EPC}.
+        This lets the cutting room pull rolls by scanning instead of typing.
+  \item \btn{+ Duplicate last} copies the previous roll's details --- useful for
+        a pallet of the same fabric.
+  \item Press \btn{Receive rolls}.
+\end{steps}
+
+The system creates the goods receipt number for you. Every roll is listed on the
+\menu{Roll register} tab, where you can search by roll number, tag, batch or
+location.
+
+\shot{31-store-rolls}{The roll register. Every roll ever received, with how much
+is left on it.}{fig:store-rolls}
+
+\subsection{Looking up a past delivery}
+
+The \menu{Goods receipts} tab lists every delivery the store has ever booked in,
+newest first, with the supplier, their invoice number, how many rolls came and
+how many metres that was --- and who received it.
+
+\shot{33-store-grn-list}{The goods receipt register. Click any row to see the
+individual rolls that arrived on that delivery.}{fig:store-grn}
+
+\begin{tipbox}
+This is the screen to open when a supplier queries a delivery. The \field{GRN no}
+is the factory's own receipt number; the \field{Invoice} column is the
+supplier's. Quoting the GRN number settles most questions in one telephone call.
+\end{tipbox}
+
+\section{Cutting: issuing fabric and making bundles}
+
+Open \menu{Cutting}. Each line is a cut order --- an instruction to cut a
+particular design and colour.
+
+\shot{40-cutting-list}{Cut orders, showing how many pieces have been cut and how
+many have been tagged so far.}{fig:cut-list}
+
+\subsection{Starting a new cut order}
+
+A cut order says what is going to be cut, before any fabric is issued. Press
+\btn{+ New cut order} at the top right.
+
+\shotsmall{42-cutting-new}{Creating a cut order. Only the design, colour and
+planned quantity are required.}{fig:cut-new}
+
+\begin{steps}
+  \item Choose the \field{Design / style} --- for example
+        \typed{JKT-201 $\cdot$ Trucker Denim Jacket}.
+  \item Choose the \field{Colour}.
+  \item If this cutting is for a particular customer order, pick it under
+        \field{Customer order}. Leave it on \emph{Not linked to an order} for
+        stock production.
+  \item Type the \field{Planned quantity} --- how many pieces you intend to cut.
+  \item Add \field{Remarks} if the marker or lay needs a note.
+  \item Press \btn{Create}.
+\end{steps}
+
+\begin{tipbox}
+Linking the cut order to a customer order is worth doing. It is what lets the
+\menu{Orders} screen show that customer how many of their pieces are finished,
+without anybody counting anything by hand.
+\end{tipbox}
+
+Click a cut order to open it.
+
+\shotsmall{41-cutting-detail}{Inside a cut order: the fabric consumed and the
+bundles produced.}{fig:cut-detail}
+
+\subsection{Issuing rolls to a cut}
+
+\begin{steps}
+  \item Press \btn{Issue rolls}.
+  \item Only rolls of the matching colour are offered, so you cannot issue the
+        wrong shade by mistake.
+  \item Either tick the rolls, or scan their tags and press
+        \btn{Select scanned rolls}.
+  \item Adjust the metres if you are not using the whole roll.
+  \item Press \btn{Issue selected}.
+\end{steps}
+
+\begin{warnbox}
+The system will not let you issue more metres than a roll actually has left. If
+you see that message, check the roll number --- you may have picked up the wrong one.
+\end{warnbox}
+
+\subsection{Creating bundles}
+
+\begin{steps}
+  \item Press \btn{Create bundles}.
+  \item Add a line for each size: how many bundles, and how many pieces in each.
+  \item The running total is shown at the bottom. Check it against your lay.
+  \item Press \btn{Create bundles}. Each bundle gets its own number.
+\end{steps}
+
+When the bundles are tied and ready, press \btn{Issue all to stitching}.
+
+\section{Stitching: counting in and attaching tags}
+
+This is the most important station in the whole system, because this is where a
+garment first gets its identity.
+
+\shot{50-stitching}{The stitching screen. Bundles waiting to be counted are at the
+top; bundles being tagged are underneath.}{fig:stitching}
+
+\subsection{Step one: count the bundle in}
+
+The bundle arrives with a paper count from cutting. Your job is to check it.
+
+\begin{steps}
+  \item Press \btn{Count in} on the bundle.
+  \item Physically count the pieces.
+  \item Type the number you actually counted.
+  \item Press \btn{Confirm count}.
+\end{steps}
+
+\shotsmall{51-stitching-count}{Counting a bundle in. Type what you really
+counted, not what the paper says.}{fig:stitch-count}
+
+\begin{tipbox}
+\textbf{Always type your real count.} If it differs from cutting's figure, the
+system records the difference and moves on --- nobody gets into trouble, and the
+factory learns where pieces are being lost. Hiding a difference is what causes
+problems later.
+\end{tipbox}
+
+\subsection{Step two: attach the tags}
+
+\begin{steps}
+  \item Press \btn{Attach tags} on the bundle.
+  \item Fit a tag to each finished garment.
+  \item Scan all the tags into the box.
+  \item Press \btn{Register garments}.
+\end{steps}
+
+\shotsmall{52-stitching-tags}{Attaching tags. The three boxes at the top show the
+bundle quantity, how many are already tagged, and how many are left.}{fig:stitch-tags}
+
+\begin{stopbox}
+\textbf{One tag, one garment, forever.} If a tag has already been used on another
+garment, the system refuses it and shows you which ones. Never try to force a
+duplicate tag through --- it would make two garments look like the same one and
+the count would be wrong from then on. Put that tag aside and use a fresh one.
+\end{stopbox}
+
+You also cannot register more tags than the bundle has pieces. If you get that
+message, re-count the bundle.
+
+\section{Sorting: splitting a pile into groups}
+
+The sorting table is where a mixed pile is separated into batches. The system
+does the sorting for you --- you just read the pile.
+
+\shot{60-sorting-list}{Sorting sessions. Open sessions are listed at the top.}{fig:sort-list}
+
+\subsection{Starting a session}
+
+\begin{steps}
+  \item Press \btn{+ New sorting session}.
+  \item Choose your \field{Station}.
+  \item Choose how to group the pile. Two ready-made choices cover nearly
+        everything:
+        \begin{bullets}
+          \item \btn{Before wash: design / colour / size}
+          \item \btn{After wash: order / size}
+        \end{bullets}
+  \item Press \btn{Open session}.
+\end{steps}
+
+\shotsmall{61-sorting-new}{Starting a sorting session. The preset buttons set the
+grouping for you.}{fig:sort-new}
+
+\subsection{Reading and sending}
+
+Bulk-read the pile into the scan box and press \btn{Add to session}. The system
+splits the read into groups and counts each one.
+
+\shotsmall{62-sorting-session}{A sorting session. Each group has its own row and
+its own send button.}{fig:sort-session}
+
+Each group has a \btn{Send to \ldots} button. Pressing it creates a separate
+transfer note for that group alone, so the wash plant receives one clean batch at
+a time.
+
+\begin{warnbox}
+Anything the system cannot place appears in an \textbf{Exceptions} list ---
+usually a garment from another section, or a tag it does not recognise. Take
+those pieces off the table and show them to your supervisor. They are not in
+any group and will not be sent.
+\end{warnbox}
+
+\section{Retrofit bench: correcting a fault}
+
+When quality control fails a garment, it comes to you with everything the
+inspector recorded.
+
+\shot{90-retrofit-queue}{The retrofit queue. The \field{Defects} column shows how
+many faults are still outstanding on each garment.}{fig:retro-queue}
+
+\begin{steps}
+  \item Scan the garment's tag into the box at the top, or click its row in the
+        queue.
+  \item The screen fills with the design picture and numbered markers showing
+        \emph{exactly} where each fault is.
+  \item Make the corrections.
+  \item Tick off the faults you have fixed (all are ticked already).
+  \item Write what you did in \field{Correction carried out}.
+  \item Press \btn{Mark corrected}.
+\end{steps}
+
+\shot{91-retrofit-file}{The defect file. The numbered marker on the design shows
+precisely where the inspector found the problem.}{fig:retro-file}
+
+\begin{tipbox}
+Write the correction in normal words --- ``re-stitched left knee seam and
+pressed'' is perfect. The inspector reads this when the garment comes back, so
+they know what to look at.
+\end{tipbox}
+
+When a batch is corrected, send it back to quality control using
+Section~\ref{sec:dispatch}.
+
+\section{Dispatch: changing the tag}
+
+At dispatch the factory's own tracking tag comes off and the customer's tag goes
+on.
+
+\shot{95-dispatch-ready}{What is waiting to be re-tagged, grouped by style, colour
+and size.}{fig:disp-ready}
+
+\begin{steps}
+  \item Open the shipment from the \menu{Shipments} tab, or press
+        \btn{Start a shipment}.
+  \item Press \btn{Re-tag garments}.
+  \item Scan the \textbf{tracking tag} on the garment. Its details appear,
+        including the tag specification that this customer requires.
+  \item Apply the customer's tag to the garment.
+  \item Scan the \textbf{customer tag}. The pair is added to the list.
+  \item Repeat for the tray, then press \btn{Apply tag swap}.
+\end{steps}
+
+\shotsmall{97-dispatch-swap}{Re-tagging. Scan the old tag, then the new one, and
+press Enter after each scan.}{fig:disp-swap}
+
+\begin{plainwords}
+After the swap, the garment answers to its \emph{new} customer tag. The old
+factory tag is released, so it can be put on a brand new garment tomorrow. If you
+scan that old tag now, the system correctly says ``not registered'' --- because
+that tag no longer belongs to this pair of jeans.
+\end{plainwords}
+
+\subsection{Shipments: packing and sending}
+
+Re-tagged garments go into a \textbf{shipment} --- one carton load for one
+customer. The \menu{Shipments} tab lists them.
+
+\shot{96-dispatch-shipments}{The shipment list. \texttt{OPEN} means you can still
+add garments to it; \texttt{SHIPPED} means it has left the building.}{fig:disp-shipments}
+
+\begin{steps}
+  \item Press \btn{+ New shipment} and choose the customer, the order it is
+        against, and the carrier.
+  \item The shipment opens with a status of \texttt{OPEN} and zero units.
+  \item Click that shipment, then re-tag garments into it as described above.
+        The \field{Units} count rises as you go.
+  \item When the carton is full, mark the shipment as shipped. The packing list
+        prints automatically.
+\end{steps}
+
+\begin{warnbox}
+Once a shipment is marked \texttt{SHIPPED} you cannot add anything more to it.
+Check the \field{Units} count against the customer's order before you close it.
+\end{warnbox}

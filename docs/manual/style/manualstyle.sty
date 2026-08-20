@@ -1,0 +1,154 @@
+% ===========================================================================
+%  manualstyle.sty - shared look and feel for the Denim RFID user manuals
+% ===========================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{manualstyle}[2026/08/18 Denim RFID manual style]
+
+\RequirePackage[a4paper,margin=25mm,headheight=15pt]{geometry}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{array}
+\RequirePackage{caption}
+\RequirePackage{float}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage[hidelinks]{hyperref}
+
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc,fit,backgrounds}
+
+% --------------------------------------------------------------- Colours
+\definecolor{brandblue}{HTML}{1D4ED8}
+\definecolor{brandink}{HTML}{16202E}
+\definecolor{brandgrey}{HTML}{5A6B80}
+\definecolor{brandline}{HTML}{DDE3EC}
+\definecolor{brandsoft}{HTML}{E7EDFE}
+\definecolor{okgreen}{HTML}{17794A}
+\definecolor{oksoft}{HTML}{DCF3E7}
+\definecolor{warnamber}{HTML}{A86200}
+\definecolor{warnsoft}{HTML}{FDF0D5}
+\definecolor{dangerred}{HTML}{B3261E}
+\definecolor{dangersoft}{HTML}{FCE8E6}
+\definecolor{infoteal}{HTML}{0E6F8F}
+\definecolor{infosoft}{HTML}{DCF0F7}
+
+% Section colours matching the application
+\definecolor{secFabric}{HTML}{8B6F47}
+\definecolor{secCut}{HTML}{C2703D}
+\definecolor{secStitch}{HTML}{3D7EC2}
+\definecolor{secSort}{HTML}{5B53C9}
+\definecolor{secWash}{HTML}{2F9E8F}
+\definecolor{secFinish}{HTML}{D29B1E}
+\definecolor{secQC}{HTML}{C0392B}
+\definecolor{secRetro}{HTML}{E07B39}
+\definecolor{secDisp}{HTML}{2D8A4E}
+
+% ------------------------------------------------------- Headings & page
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{brandblue}}
+  {\normalsize\color{brandgrey}\MakeUppercase{\chaptertitlename}\ \thechapter}
+  {8pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-10pt}{26pt}
+
+\titleformat{\section}{\normalfont\Large\bfseries\color{brandink}}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{brandink}}{\thesubsection}{0.7em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\small\color{brandgrey}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{brandgrey}Denim RFID Track \& Trace}
+\fancyfoot[C]{\small\color{brandgrey}\thepage}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[C]{\small\color{brandgrey}\thepage}%
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\renewcommand{\arraystretch}{1.25}
+
+\captionsetup{font=small,labelfont={bf,color=brandblue},skip=6pt}
+
+% ------------------------------------------------------------- Callouts
+\newtcolorbox{tipbox}[1][]{%
+  enhanced, breakable, colback=oksoft, colframe=okgreen,
+  boxrule=0pt, leftrule=3pt, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\small, title={Helpful to know}, coltitle=okgreen,
+  attach boxed title to top left={yshift=-2mm,xshift=6mm},
+  boxed title style={colback=oksoft,boxrule=0pt}, #1}
+
+\newtcolorbox{warnbox}[1][]{%
+  enhanced, breakable, colback=warnsoft, colframe=warnamber,
+  boxrule=0pt, leftrule=3pt, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\small, title={Take care}, coltitle=warnamber,
+  attach boxed title to top left={yshift=-2mm,xshift=6mm},
+  boxed title style={colback=warnsoft,boxrule=0pt}, #1}
+
+\newtcolorbox{stopbox}[1][]{%
+  enhanced, breakable, colback=dangersoft, colframe=dangerred,
+  boxrule=0pt, leftrule=3pt, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\small, title={Important}, coltitle=dangerred,
+  attach boxed title to top left={yshift=-2mm,xshift=6mm},
+  boxed title style={colback=dangersoft,boxrule=0pt}, #1}
+
+\newtcolorbox{plainbox}[1][]{%
+  enhanced, breakable, colback=brandsoft, colframe=brandblue,
+  boxrule=0pt, leftrule=3pt, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt, #1}
+
+% "In plain words" explainer used throughout for non-technical readers
+\newtcolorbox{plainwords}[1][]{%
+  enhanced, breakable, colback=infosoft, colframe=infoteal,
+  boxrule=0pt, leftrule=3pt, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\small, title={In plain words}, coltitle=infoteal,
+  attach boxed title to top left={yshift=-2mm,xshift=6mm},
+  boxed title style={colback=infosoft,boxrule=0pt}, #1}
+
+% ------------------------------------------------------------ Utilities
+% On-screen button, menu item and typed value
+\newcommand{\btn}[1]{\tikz[baseline=(x.base)]{\node[draw=brandline,fill=white,
+  rounded corners=2pt,inner xsep=4pt,inner ysep=2pt,font=\small\bfseries](x){#1};}}
+\newcommand{\menu}[1]{\textcolor{brandblue}{\textbf{#1}}}
+\newcommand{\field}[1]{\textit{#1}}
+\newcommand{\typed}[1]{\texttt{\small #1}}
+
+% Screenshot figure: \shot{file}{caption}{label}
+\newcommand{\shot}[3]{%
+  \begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{img/#1}}
+    \caption{#2}\label{#3}
+  \end{figure}}
+
+% Narrower screenshot for dialogs: \shotsmall{file}{caption}{label}
+\newcommand{\shotsmall}[3]{%
+  \begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=0.86\linewidth,height=0.62\textheight,keepaspectratio]{img/#1}}
+    \caption{#2}\label{#3}
+  \end{figure}}
+
+% Numbered "do this" list
+\newenvironment{steps}{\begin{enumerate}[leftmargin=*,itemsep=4pt,topsep=4pt]}{\end{enumerate}}
+\newenvironment{bullets}{\begin{itemize}[leftmargin=*,itemsep=3pt,topsep=4pt]}{\end{itemize}}
+
+% Portal title page block: \portalcover{Name}{Who it is for}{colour}
+\newcommand{\portalcover}[3]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[#3] (current page.north west) rectangle ([yshift=-52mm]current page.north east);
+    \node[anchor=north west,text=white,font=\Huge\bfseries,align=left]
+      at ([xshift=25mm,yshift=-20mm]current page.north west) {#1};
+    \node[anchor=north west,text=white,font=\large,align=left]
+      at ([xshift=25mm,yshift=-34mm]current page.north west) {#2};
+  \end{tikzpicture}
+  \vspace*{34mm}}

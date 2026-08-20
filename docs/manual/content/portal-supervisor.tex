@@ -1,0 +1,171 @@
+\chapter{The Supervisor Portal}
+\label{ch:supervisor}
+
+\portalcover{Supervisor Portal}{For the person in charge of a department}{secSort}
+
+\section{Who this chapter is for}
+
+You run a department. You can do everything an operator can do at a station ---
+receiving, dispatching, scanning, tagging --- and four things they cannot:
+
+\begin{bullets}
+  \item See how much work your section is holding and how long it has been there.
+  \item \textbf{Settle a count difference} that the operators cannot resolve.
+  \item \textbf{Cancel a handover} that was sent by mistake.
+  \item Build and save reports for your own use and for the team.
+\end{bullets}
+
+\section{Checking the state of your section}
+
+Open \menu{Section WIP} and choose your department at the top.
+
+\shot{12-admin-sections-wip}{Section WIP. The four boxes summarise the section;
+the table below breaks the work down however you choose.}{fig:sup-wip}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{32mm}p{106mm}@{}}
+\toprule
+\textbf{Box} & \textbf{What it tells you} \\
+\midrule
+Garments in process & How much work is physically in your section right now. \\
+Groups              & How many different kinds of work that is. \\
+Average wait        & How long a typical piece has been sitting. \\
+Longest wait        & The oldest piece. This is the number to watch. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Slicing the work however you need}
+
+The \emph{Group by} row lets you break the same work down in different ways. Tick
+any combination:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{34mm}p{104mm}@{}}
+\toprule
+\textbf{Group by} & \textbf{Answers the question} \\
+\midrule
+Design / Colour / Size & What styles am I holding? \\
+Customer / Order       & Whose goods am I holding? \\
+Receiving batch        & \textbf{Which delivery did this come in on, and when?} \\
+Age bucket             & How much of my work is fresh and how much is stale? \\
+Article status         & Is anything on hold or in rework? \\
+Fabric type            & Useful when a shade problem is suspected. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\shot{13-admin-sections-batch}{The same work grouped by the delivery it arrived
+on. The panel underneath lists every bulk receipt into the section, with the time
+it was received and how much of it is still here.}{fig:sup-batch}
+
+\begin{tipbox}
+\textbf{Finding stalled work.} Set \field{Waiting at least (hours)} to 24 and set
+\field{Sort by} to ``Oldest arrival first''. What you are left with is exactly
+the work that is holding up your section.
+\end{tipbox}
+
+Press \btn{Export CSV} to take any view into Excel.
+
+\section{Settling a count difference}
+
+When operators have scanned a batch twice and pieces are still missing, only a
+supervisor can close it.
+
+\begin{steps}
+  \item Open \menu{Transfers} and find the document. Its status is
+        \texttt{VARIANCE}.
+  \item Click the row to open it and read the list of missing garments.
+  \item \textbf{Physically look for them first.} Check the sending section, the
+        floor, and the next trolley.
+  \item If they truly cannot be found, press \btn{Close variance}.
+  \item Type what happened. The system will not accept fewer than five characters
+        --- write a real explanation, not a full stop.
+  \item Press \btn{Close variance} to confirm.
+\end{steps}
+
+\shotsmall{75-transfers-doc}{A transfer document. Everything sent, everything
+received, and exactly what is missing.}{fig:sup-doc}
+
+\begin{plainwords}
+Closing a variance does not delete the garments. They are put \textbf{on hold} in
+the department that sent them, so they stop counting as ``in transit'' and stop
+distorting everybody's figures. If one turns up next week, it is still in the
+system with its whole history.
+\end{plainwords}
+
+\begin{stopbox}
+Your name and the reason you typed are stored permanently against that document
+and are visible in the audit trail. Closing a variance is an accounting decision,
+so treat it as one.
+\end{stopbox}
+
+\section{Cancelling a handover sent by mistake}
+
+If a batch was dispatched in error and the receiving department has \emph{not}
+started receiving it:
+
+\begin{steps}
+  \item Open \menu{Transfers} for your section.
+  \item Find the document under \emph{Dispatched, not yet received}.
+  \item Press \btn{Cancel} and give a reason.
+\end{steps}
+
+All the garments return to your section immediately. Once even one piece has been
+received, cancelling is no longer possible --- receive the rest and send it back
+as a normal transfer instead.
+
+\section{Watching the whole flow}
+
+Open \menu{Dashboard}. Even if you only run one department, the flow board tells
+you whether your section is about to be flooded or starved.
+
+\shot{10-admin-dashboard}{The dashboard. Every department, what it is holding, and
+what needs attention.}{fig:sup-dash}
+
+Look at three things in particular:
+
+\begin{bullets}
+  \item \textbf{The card for the department before yours.} A large number there
+        means work is coming.
+  \item \textbf{``Inbound''} on your own card --- batches dispatched to you that
+        nobody has received yet.
+  \item \textbf{Transfers needing attention} --- counts that did not tally
+        anywhere in the plant.
+\end{bullets}
+
+The coloured bar at the bottom of each card is the ageing profile: green is fresh
+work, red has been sitting more than three days.
+
+\section{Building a report}
+
+Reports are built the same way by every role that has the screen, so the
+walkthrough lives in its own chapter: see Chapter~\ref{ch:reports}. As a
+supervisor the datasets you will use most are \emph{Articles / WIP} for what your
+section is holding and \emph{Transfers} for handovers that have not settled.
+
+\section{Fixing a garment that is genuinely stuck}
+
+Occasionally a garment ends up recorded in the wrong place --- usually because a
+trolley was moved before it was scanned.
+
+\begin{steps}
+  \item Open \menu{Trace Article} and find the garment by tag or serial number.
+  \item Press \btn{Correct section}.
+  \item Choose where it really is, and type why the correction is needed.
+\end{steps}
+
+\shot{99-trace-article}{The full life story of one garment: every scan, in order,
+with who did it.}{fig:sup-trace}
+
+If a tag is physically damaged, \btn{Replace damaged tag} lets you fit a new one.
+The garment keeps its identity and its entire history; only the tag changes.
+
+\begin{warnbox}
+Both actions require a written reason and are recorded against your name. They
+are for genuine data problems, not for making an awkward number go away.
+\end{warnbox}

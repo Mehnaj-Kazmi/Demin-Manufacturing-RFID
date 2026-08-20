@@ -1,0 +1,157 @@
+\chapter{About This Software}
+
+\section{What problem does it solve?}
+
+A large denim factory makes tens of thousands of garments every day. Those
+garments are constantly moving: from the cutting room to the sewing lines, into
+the washing plant, on to finishing, through quality checking, and finally into
+cartons for the customer.
+
+The old way of keeping track was paper. Somebody counted a bundle, wrote the
+number on a slip, and passed it along. When the numbers did not match at the end
+of the day, nobody could say where the missing pieces went.
+
+This software replaces that guesswork. A small electronic tag --- called an
+\textbf{RFID tag} --- is attached to every single garment. Special readers can
+sense hundreds of these tags at once, without anyone having to look at them or
+scan them one by one.
+
+\begin{plainwords}
+\textbf{RFID} stands for ``Radio Frequency Identification''. Think of it as a
+tiny electronic name badge. It has no battery. When a reader sends out a radio
+signal, the tag wakes up and calls back its own unique number. A reader can hear
+hundreds of tags in a couple of seconds, even inside a closed trolley.
+\end{plainwords}
+
+\section{What the system keeps track of}
+
+\begin{bullets}
+  \item \textbf{Fabric rolls} arriving from suppliers, and how much of each roll has been used.
+  \item \textbf{Bundles} of cut pieces going from the cutting room to the sewing lines.
+  \item \textbf{Every finished garment}, individually, from stitching to shipping.
+  \item \textbf{Every handover} between departments, with a document and a count check.
+  \item \textbf{Every quality inspection}, including exactly where on the garment a fault was found.
+  \item \textbf{Every person} who touched the work, and when.
+\end{bullets}
+
+\section{The journey of one pair of jeans}
+
+Figure~\ref{fig:flow} shows the whole route. Each box is a department. Each
+arrow is a handover, and at every handover the system does the same two things:
+the department sending the goods scans what is leaving, and the department
+receiving them scans what arrived. The computer then compares the two.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=6mm and 9mm,
+  box/.style={rectangle,rounded corners=3pt,draw=none,text=white,
+              minimum height=11mm,minimum width=27mm,align=center,font=\small\bfseries},
+  arrow/.style={-{Stealth[length=3mm]},thick,draw=brandgrey},
+  lbl/.style={font=\scriptsize\itshape,text=brandgrey}]
+
+\node[box,fill=secFabric] (fab) {Fabric\\Warehouse};
+\node[box,fill=secCut,right=of fab] (cut) {Cutting};
+\node[box,fill=secStitch,right=of cut] (sti) {Stitching};
+\node[box,fill=secSort,right=of sti] (sor) {Sorting};
+
+\node[box,fill=secWash,below=14mm of sor] (was) {Washing \&\\Treatment};
+\node[box,fill=secFinish,left=of was] (fin) {Finishing};
+\node[box,fill=secQC,left=of fin] (qc) {Quality\\Control};
+\node[box,fill=secRetro,left=of qc] (ret) {Retrofitting};
+
+\node[box,fill=secDisp,below=14mm of ret] (dis) {Dispatch \&\\Packing};
+\node[box,fill=brandgrey,right=of dis] (shp) {Shipped};
+
+\draw[arrow] (fab) -- node[lbl,above]{rolls} (cut);
+\draw[arrow] (cut) -- node[lbl,above,align=center]{hand count} (sti);
+\draw[arrow] (sti) -- node[lbl,above,align=center]{tag added} (sor);
+\draw[arrow] (sor) -- (was);
+\draw[arrow] (was) -- (fin);
+\draw[arrow] (fin) -- (qc);
+\draw[arrow] (qc) -- node[lbl,above]{failed} (ret);
+\draw[arrow] (ret) -- (dis);
+\draw[arrow] (dis) -- node[lbl,above,align=center]{new tag} (shp);
+
+\draw[arrow,dashed] (ret.north) to[out=60,in=200] node[lbl,above,sloped]{corrected, back to QC} (qc.south west);
+\draw[arrow,dashed] (qc.south) to[out=280,in=20] node[lbl,below,sloped]{passed} (dis.north east);
+
+\end{tikzpicture}
+\caption{The route every garment takes. Solid arrows are the normal path;
+dashed arrows show what happens after a quality check.}
+\label{fig:flow}
+\end{figure}
+
+\section{The one idea you must understand: the two-sided count}
+
+This is the heart of the system, and it is simple.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=10mm,
+  dept/.style={rectangle,rounded corners=3pt,fill=brandsoft,draw=brandblue,
+               minimum height=16mm,minimum width=38mm,align=center,font=\small\bfseries},
+  doc/.style={rectangle,rounded corners=2pt,fill=white,draw=brandgrey,
+              minimum height=13mm,minimum width=34mm,align=center,font=\scriptsize},
+  arrow/.style={-{Stealth[length=3mm]},thick,draw=brandblue}]
+
+\node[dept] (a) {Sending\\department};
+\node[doc,right=22mm of a] (d) {Transfer note\\\textbf{240 pieces}};
+\node[dept,right=22mm of d] (b) {Receiving\\department};
+
+\draw[arrow] (a) -- node[font=\scriptsize,above,align=center]{scans what\\is leaving} (d);
+\draw[arrow] (d) -- node[font=\scriptsize,above,align=center]{scans what\\arrived} (b);
+
+\node[below=9mm of d,font=\small,align=center,text=brandink]
+  {The computer compares the two numbers};
+\node[below=17mm of d,align=center,font=\small\bfseries]
+  {\textcolor{okgreen}{Same $\Rightarrow$ MATCHED}\qquad
+   \textcolor{dangerred}{Different $\Rightarrow$ VARIANCE}};
+\end{tikzpicture}
+\caption{Every handover between departments works this way.}
+\label{fig:tally}
+\end{figure}
+
+If the two counts agree, the handover is marked \textbf{MATCHED} and everyone
+moves on. If they do not agree, the system marks it a \textbf{VARIANCE} and
+shows a list of exactly which garments were not found --- by serial number, style
+and size. Nobody has to hunt through paperwork.
+
+\begin{tipbox}
+A variance is not an accusation. Tags are sometimes missed because a garment was
+at the bottom of a trolley. Simply scan the batch again; anything found the
+second time is added, and the variance clears by itself.
+\end{tipbox}
+
+\section{Who uses which portal}
+
+The same software shows a different set of screens depending on who signs in.
+This manual has one chapter for each group.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{34mm}p{45mm}p{60mm}@{}}
+\toprule
+\textbf{Portal} & \textbf{Who signs in} & \textbf{What they mainly do} \\
+\midrule
+Operator &
+  Machine and station staff in the store, cutting, sewing, sorting, wash,
+  finishing, retrofit and dispatch &
+  Scan garments in and out, attach tags, count bundles, correct faults \\
+Quality Inspector &
+  QC staff at the inspection benches &
+  Check garments, mark faults on the picture of the design, pass or fail \\
+Supervisor &
+  The person in charge of a department &
+  Everything an operator can do, plus settle count differences and cancel
+  mistaken handovers \\
+Administrator &
+  Plant management and the IT administrator &
+  See all the numbers, build reports, manage staff accounts, register readers,
+  maintain the product list \\
+\bottomrule
+\end{tabular}
+\caption{The four portals covered by this manual.}
+\end{table}
